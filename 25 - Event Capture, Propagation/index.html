@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Understanding JavaScript's Capture</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="https://fav.farm/🔥" />
+</head>
+<body class="bod">
+    <div class="one">
+        <div class="two">
+            <div class="three">
+            </div>
+        </div>
+    </div>
+    <button></button>
+    <script>
+        const divs=document.querySelectorAll('div');
+
+        function logText(e){
+            console.log(this.classList.value);
+            // console.log(this);
+            // e.stopPropagation();
+            // stops event bubbling
+        }
+        divs.forEach(div=>div.addEventListener('click',logText,{capture:true,once:true}));
+        // by default capture value is false, so events are filed on bubble up after the capture works, making it true will make it work on bubble down.
+        // once true makes it unbind after the first event, like removeevent listener, after running fully once. so clicking again wont work. useful for checkout pages.
+    </script>
+</body>
+
+</html>
