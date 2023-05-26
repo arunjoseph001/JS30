@@ -11,7 +11,19 @@
 
 <body>
     <script>
+        const pressed=[]
+        const screctCode='arun'
 
+        window.addEventListener('keyup',(e)=>{
+            // console.log(e.key)
+            pressed.push(e.key)
+            pressed.splice(-screctCode.length-1,pressed.length-screctCode.length)
+            if(pressed.join('').includes(screctCode)){
+                console.log('code entered')
+                cornify_add()
+            }
+            console.log(pressed)
+        })
     </script>
 </body>
 
