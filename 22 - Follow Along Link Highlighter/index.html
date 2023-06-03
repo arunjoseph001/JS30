@@ -30,11 +30,34 @@
         <p>Esse quibusdam, ad, ducimus cupiditate <a href="">nulla</a>, quae magni odit <a href="">totam</a> ut
             consequatur eveniet sunt quam provident sapiente dicta neque quod.</p>
         <p>Aliquam <a href="">dicta</a> sequi culpa fugiat <a href="">consequuntur</a> pariatur optio ad minima, maxime
-            <a href="">odio</a>, distinctio magni impedit tempore enim repellendus <a href="">repudiandae</a> quas!</p>
+            <a href="">odio</a>, distinctio magni impedit tempore enim repellendus <a href="">repudiandae</a> quas!
+        </p>
     </div>
 
     <script>
-      // 👀👀👀👀👀👀👀👀👀👀👀👀👀👀👀
+        // 👀👀👀👀👀👀👀👀👀👀👀👀👀👀👀
+        const triggers = document.querySelectorAll('a')
+        const highlight = document.createElement('span')
+        highlight.classList.add('highlight')
+        document.body.append(highlight)
+
+        function highlighLink() {
+            const linkCoords = this.getBoundingClientRect()
+            // console.log(this)
+            // console.log(linkCoords)
+            const coords = {
+                width: linkCoords.width,
+                height: linkCoords.height,
+                top: linkCoords.top + window.scrollY,
+                left: linkCoords.left + window.scrollX
+            }
+            // console.log(coords)
+            highlight.style.width = `${coords.width}px`
+            highlight.style.height = `${coords.height}px`
+            highlight.style.transform = `translate(${coords.left}px,${coords.top}px)`
+        }
+
+        triggers.forEach(a => a.addEventListener('mouseenter', highlighLink))
     </script>
 </body>
 
